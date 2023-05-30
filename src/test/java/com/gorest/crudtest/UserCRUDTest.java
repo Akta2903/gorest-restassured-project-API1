@@ -40,6 +40,9 @@ public class UserCRUDTest extends TestBase {
         System.out.println("Id : " + id);
 
     }
+
+
+
     //get user by id
     @Test
     public void test002() {
@@ -87,5 +90,17 @@ public class UserCRUDTest extends TestBase {
         response.then().log().all().statusCode(204);
 
 
+    }
+    //get all users
+    @Test
+    public void test005() {
+        Response response = given()
+                .header("Content-Type","application/json")
+                .header("Access","application/json")
+                .header("Authorization","Bearer 61aafcb694ad2a184e92adcee5aae71f2288cf87d88930daf6a8b86ae21da215")
+                .when()
+                .get();
+        response.then().statusCode(200);
+        response.prettyPrint();
     }
 }
