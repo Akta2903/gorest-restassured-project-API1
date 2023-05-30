@@ -5,7 +5,6 @@ import io.restassured.response.ValidatableResponse;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -68,7 +67,7 @@ public class PostsExtractionTest {
     // 6. Extract the title of all records whose user_id = 2272670
     @Test
     public void test065() {
-        List<HashMap<String,?>> titleUser_id= response.extract().path("findAll{it.id=='39296'}.title");
+        String titleUser_id= response.extract().path("find{it.id=='39296'}.title");
         System.out.println("------------------StartingTest---------------------------");
         System.out.println(" Extract the title of all the records:" +titleUser_id);
         System.out.println("------------------End of Test---------------------------");
@@ -77,7 +76,7 @@ public class PostsExtractionTest {
     //7. Extract the body of all records whose id = 39295
     @Test
     public void test007() {
-        List<HashMap<String,?>> value= response.extract().path("findAll{it.id==39295}");
+        String value= response.extract().path("find{it.id==39295}.body");
         System.out.println("------------------StartingTest---------------------------");
         System.out.println("All the Values of id = '39295'  :" +value);
         System.out.println("------------------End of Test---------------------------");
